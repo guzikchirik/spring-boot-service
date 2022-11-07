@@ -1,0 +1,31 @@
+version: '3.3'
+
+services:
+  # db:
+  #   container_name: dbContainer
+  #   image: mysql:5.7
+  #   volumes:
+  #   - /home/crismon-01/Documenti/TESI/Docker/mysqlLogin/datas:/var/lib/mysql
+  #   ports:
+  #   - 3306
+  #   environment:
+  #    MYSQL_ROOT_PASSWORD: "root"
+  #    MYSQL_USER: "root"
+  #    MYSQL_PASSWORD: "root"
+  #    MYSQL_DATABASE: "schema1"
+  java:
+    container_name: appService
+    image: openjdk:17
+    ports:
+      - "8080:8080"
+    # depends_on:
+    # - db
+    # - db- "/Users/Anton_Chyrko/Shared/config:/etc/selenoid"
+#    volumes:
+#         - /Users/Anton_Chyrko/docker/webService/:demo-0.0.1-SNAPSHOT.jar
+    entrypoint: ["java", "-jar", "build/libs/demo-0.0.1-SNAPSHOT.jar"]
+    # working_dir: /Users/Anton_Chyrko/docker/webService
+    # command: bash -c "java -jar demo-0.0.1-SNAPSHOT.jar"
+  # volumes:
+  #  - "./Server:/Server:rw"
+  # entrypoint: ["java", "-jar", "/Server/target/Server-0.0.1-SNAPSHOT-jar-with-dependencies.jar"]
